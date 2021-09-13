@@ -7,14 +7,13 @@ assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+##Description
+문제에 대한 명확하고 간결한 설명
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## Solution
+고려한 solution에 대한 명확하고 간결한 설명
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+##Progress
+-[]todl1
+-[]todl2
+-[]todl3

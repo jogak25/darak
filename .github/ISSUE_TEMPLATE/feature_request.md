@@ -14,6 +14,6 @@ assignees: ''
 고려한 solution에 대한 명확하고 간결한 설명
 
 ##Progress
--[]todl1
--[]todl2
--[]todl3
+- [ ] todl1
+- [ ] todl2
+- [ ] todl3

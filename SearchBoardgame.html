@@ -11,7 +11,7 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             padding: 6px;
-            margin: 6px;
+            margin: 10px 0px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 100%;
         }
@@ -27,6 +27,7 @@
         .main-title{
           font-size: 20px;
           font-weight: 600;
+          margin : 10px 0;
         }
         .title {
           font-size: 12px;
@@ -55,7 +56,7 @@
           text-overflow: ellipsis;
         }
         .info strong {
-          color: rgb(0, 94, 255);
+          color: rgb(28, 28, 28);
         }
         .pageContainer {
           text-align: right;
@@ -70,11 +71,49 @@
           border-radius: 6px;
           background-color: #ffffff;
         }
+        .selectBox{
+          display: flex;
+          width: 100%;
+          justify-items: flex-end;
+        }
+        #searchBox{
+          width:65%;
+          border : 1px solid gray;
+          border-radius: 5px;
+          height: 20px;
+        }
+        .searchOption{
+          width: 18%;
+          margin-right : 1%;
+          border : 1px solid rgb(0, 148, 253);;
+          border-radius: 5px;
+          color: rgb(0, 148, 253);
+          background-color: rgb(189, 225, 250);;
+        }
+        .searchBtn{
+          width : 15%;
+          margin-left : 1%;
+          border : 1px solid rgb(241, 161, 12);;
+          border-radius: 5px;
+          color: rgb(241, 161, 12);;
+          /* background-color: aqua; */
+          text-align: center;
+        }
     </style>
 </head>
 <body>
-  <div class="main-title">BoardGameGeek 데이터 수집</div>
-  <input type="file" id="fileInput"  accept=".json">
+  <div class="main-title">BoardGame Search</div>
+  <!-- <input type="file" id="fileInput"  accept=".json"> -->
+   <div class ="selectBox">
+      <select class="searchOption" name="language" onchange="filterBoardgame(this)">
+        <option value="korean">Title</option>
+        <option value="english">Best</option>
+        <option value="chinese">추천</option>
+        <option value="spanish">난이도</option>
+      </select>
+      <input type="text" name="search" id="searchBox">
+      <input class = "searchBtn" ype="button" value="Search">
+  </div>
   <div id="test"></div>
   <div id="pageContainer" class = "pageContainer">
 

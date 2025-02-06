@@ -29,43 +29,43 @@ function loadgame() {
 }
 
 
-
-
-document.getElementById('fileInput').addEventListener('change', function(event) {
-    let test = document.querySelector('#test')
-    const file = event.target.files[0];
-    test.innerText = '1'
-    if (file) {
-        test.innerText = '2'
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            test.innerText = '2'
-            const gameData = JSON.parse(e.target.result);
-            gameList = gameData;
-            let cardCount = 0;
-            let startIndex = (currentPage - 1) * 10;
-            let endIndex = startIndex + 10;
-            let gamesToDisplay = gameData.slice(startIndex, endIndex);
+// document.getElementById('fileInput').addEventListener('change', function(event) {
+//     let test = document.querySelector('#test')
+//     const file = event.target.files[0];
+//     test.innerText = '1'
+//     if (file) {
+//         test.innerText = '2'
+//         const reader = new FileReader();
+//         reader.onload = function(e) {
+//             test.innerText = '2'
+//             const gameData = JSON.parse(e.target.result);
+//             gameList = gameData;
+//             let cardCount = 0;
+//             let startIndex = (currentPage - 1) * 10;
+//             let endIndex = startIndex + 10;
+//             let gamesToDisplay = gameData.slice(startIndex, endIndex);
             
-            for (let i=0; i<gamesToDisplay.length; i++) {
+//             for (let i=0; i<gamesToDisplay.length; i++) {
     
-                if (cardCount >= 20) {
+//                 if (cardCount >= 20) {
     
-                    alert("카드 생성이 20개를 초과하여 중단됩니다.")
-                    // console.log("카드 생성이 20개를 초과하여 중단됩니다.");
-                    break;
-                }
-                createCards(gamesToDisplay[i]);
-                cardCount++;
-            }
-            //const maxPageSize = gameList.length/10;
-            //calcPage(1,maxPageSize);
-        };
-        reader.readAsText(file);
-    }
-});
+//                     alert("카드 생성이 20개를 초과하여 중단됩니다.")
+//                     // console.log("카드 생성이 20개를 초과하여 중단됩니다.");
+//                     break;
+//                 }
+//                 createCards(gamesToDisplay[i]);
+//                 cardCount++;
+//             }
+//             //const maxPageSize = gameList.length/10;
+//             //calcPage(1,maxPageSize);
+//         };
+//         reader.readAsText(file);
+//     }
+// });
 
-
+function filterBoardgame(e){
+    
+}
 
 
 function loadGameList(gameList) {

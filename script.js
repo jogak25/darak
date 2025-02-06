@@ -148,4 +148,4 @@ function createCards(gameData) {
         `;
     cardContainer.appendChild(card);
 }
-// loadgame();
+loadgame();

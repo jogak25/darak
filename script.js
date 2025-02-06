@@ -1,6 +1,7 @@
 let currentPage = 1;
 let gameList = [];
 function loadgame() {
+    console.log('start');
     fetch('./bgg_top_games.json')
     .then(response => response.json())
     .then(gameData => {
@@ -148,4 +149,5 @@ function createCards(gameData) {
         `;
     cardContainer.appendChild(card);
 }
+console.log('begin');
 loadgame();

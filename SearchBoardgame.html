@@ -8,12 +8,10 @@
     
     <style>
         .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 6px;
-            margin: 10px 0px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
+          border-top: 1px solid #dfdfdf;   
+          padding: 6px;
+          margin: 10px 4px;
+          max-width: 100%;
         }
         .title {
             margin-top: 0;
@@ -23,6 +21,19 @@
         }
         .topInfo{
           display: flex;
+          position: relative;
+        }
+        .rank {
+          position: absolute;
+          top: -3px;
+          left: -3px;
+          background-color: rgba(255, 162, 0, 0.703);
+          color: white;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          line-height: 20px;
+          border-radius: 10px;;
         }
         .main-title{
           font-size: 20px;
@@ -40,10 +51,10 @@
         }
         .image {
           width: 60px;
-          max-height: 80px;
+          max-height: 71px;
           margin-right: 10px;
           /* border: 1px solid #dcdcdc; */
-          border-radius: 9px;
+          border-radius: 2px;
         }
         .info{
           font-size: 12px;
@@ -179,6 +190,17 @@
         .log{
           font-size: 10px;
         }
+        .hexagon{
+          position: absolute;
+          bottom: -7px;
+          left: -2px;
+          font-size: 24px;
+          font-style: italic;
+          font-weight: 600;
+          color: #fcff00;
+          text-shadow: 0 0 3px black;
+        }
+        
       </style>
         <!DOCTYPE html>
 <html lang="ko">

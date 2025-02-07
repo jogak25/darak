@@ -248,18 +248,19 @@ function createCards(gameData) {
     card.className = 'card';
     card.innerHTML = `
         <div class="topInfo">
-          <img src="${gameData.imgsrc}" class="image"></src>
-          <div>
-            <div class="title">${gameData.name}</div>
+            <div class="hexagon">${gameData.rank}</div>
+            <img src="${gameData.imgsrc}" class="image"></src>
             <div>
-            <span class="tag">R: ${gameData.rank}</span>
-            <span class="tag">W: ${gameData.weight}</span>
-            <span class="tag">Best: ${gameData.bestPlayers}</span>
-            <span class="tag">추천: ${gameData.recommendedPlayers}</span>
-            </div>
-            <p class="info"><strong>Mechanisms:</strong> ${gameData.mechanisms}</p>
-        <p class="info"><strong>Types:</strong> ${gameData.types}</p>
-        <p class="info"><strong>Link:</strong> <a href="${gameData.link}" target="_blank">BoardGameGeek</a></p>
+                <div class="title">${gameData.name}</div>
+                <div>
+                <span class="tag">R: ${gameData.rank}</span>
+                <span class="tag">W: ${gameData.weight}</span>
+                <span class="tag">Best: ${gameData.bestPlayers}</span>
+                <span class="tag">추천: ${gameData.recommendedPlayers}</span>
+                </div>
+                <p class="info">Mechanisms: ${gameData.mechanisms}</p>
+            <p class="info">Types: ${gameData.types}</p>
+            <p class="info">Link: <a href="${gameData.link}" target="_blank">BoardGameGeek</a></p>
           </div>
         </div>                 
         `;

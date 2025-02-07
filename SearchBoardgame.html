@@ -161,7 +161,19 @@
         }
         .top {
           display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 78px;
+        margin-bottom: 10px;
+        }
+        .searchBox {
+          display: flex
+;
           justify-content: space-between;
+        }
+        #gameCardContainer{
+          height: calc(100vh - 130px);
+          overflow: auto;
         }
       </style>
         <!DOCTYPE html>
@@ -193,22 +205,24 @@
         <input class = "searchBtn" ype="button" value="Search">
     </div>
    </div>
+   <div class="mainbox">
+    <div class="top">
+      <div class="searchBox">
+        <div class="main-title">BoardGame Search</div>
+        <button class="open-btn" onclick="openPopup()">Search</button>
+      </div>
+      <div id="pageContainer" class = "pageContainer">
+    </div>
+    
+    <!-- <input type="file" id="fileInput"  accept=".json"> -->
+    
 
-   <div class="top">
-    <div class="main-title">BoardGame Search</div>
-    <button class="open-btn" onclick="openPopup()">Search</button>
-   </div>
-  
-  <!-- <input type="file" id="fileInput"  accept=".json"> -->
    
-  <div id="test"></div>
-  <div id="pageContainer" class = "pageContainer">
-
+    </div>
+    <div id="gameCardContainer">
+        <!-- Cards will be inserted here -->
+    </div>
   </div>
-  <div id="gameCardContainer">
-      <!-- Cards will be inserted here -->
-  </div>
-
   <script src="./script.js"></script>  
 </body>
 </html>

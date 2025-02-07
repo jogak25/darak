@@ -149,5 +149,16 @@ function createCards(gameData) {
         `;
     cardContainer.appendChild(card);
 }
+// 팝업 열기
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+
+// 팝업 닫기
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
 console.log('begin');
 loadgame();

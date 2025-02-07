@@ -99,21 +99,108 @@
           /* background-color: aqua; */
           text-align: center;
         }
-    </style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* 팝업창 스타일 */
+        .popup {
+          display: none;
+          position: fixed;
+          top: 7%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 83%;
+          height: 42px;
+          background: white;
+          padding: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          text-align: center;
+          align-content: space-around;
+        }
+  
+        /* 배경 오버레이 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* 닫기 버튼 스타일 */
+        .close-btn {
+          position: absolute;
+          width: 30px;
+          top: -15px;
+          height: 30px;
+          right: -14px;
+          background: #ff0000;
+          color: #ffffff;
+          border: none;
+          cursor: pointer;
+          /* padding: 5px; */
+          border-radius: 15px;
+        }
+
+        /* 버튼 스타일 */
+        .open-btn {
+            /* padding: 5px; */
+            /* background: rgb(237, 105, 16); */
+
+            border: 1px solid rgb(237, 105, 16);
+            color: rgb(237, 105, 16);
+            background-color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            height: 26px;
+            align-self: center;
+        }
+        .top {
+          display: flex;
+          justify-content: space-between;
+        }
+      </style>
+        <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업창 예제</title>
+
+      
+  
 </head>
 <body>
-  <div class="main-title">BoardGame Search</div>
+   <!-- 팝업창 --> 
+    
+
+   <div class="overlay" id="overlay"></div>
+   <div class="popup" id="popup">
+       <button class="close-btn" onclick="closePopup()">X</button>
+       
+       <div class ="selectBox">
+        <select class="searchOption" name="language" onchange="filterBoardgame(this)">
+          <option value="korean">Title</option>
+          <option value="english">Best</option>
+          <option value="chinese">추천</option>
+          <option value="spanish">난이도</option>
+        </select>
+        <input type="text" name="search" id="searchBox">
+        <input class = "searchBtn" ype="button" value="Search">
+    </div>
+   </div>
+
+   <div class="top">
+    <div class="main-title">BoardGame Search</div>
+    <button class="open-btn" onclick="openPopup()">Search</button>
+   </div>
+  
   <!-- <input type="file" id="fileInput"  accept=".json"> -->
-   <div class ="selectBox">
-      <select class="searchOption" name="language" onchange="filterBoardgame(this)">
-        <option value="korean">Title</option>
-        <option value="english">Best</option>
-        <option value="chinese">추천</option>
-        <option value="spanish">난이도</option>
-      </select>
-      <input type="text" name="search" id="searchBox">
-      <input class = "searchBtn" ype="button" value="Search">
-  </div>
+   
   <div id="test"></div>
   <div id="pageContainer" class = "pageContainer">
 

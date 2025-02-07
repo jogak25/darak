@@ -73,14 +73,15 @@
         }
         .selectBox{
           display: flex;
+          height : 30px;
           width: 100%;
           justify-items: flex-end;
         }
         #searchBox{
-          width:65%;
+          width:60%;
           border : 1px solid gray;
           border-radius: 5px;
-          height: 20px;
+         
         }
         .searchOption{
           width: 18%;
@@ -111,9 +112,9 @@
           left: 50%;
           transform: translate(-50%, -50%);
           width: 83%;
-          height: 42px;
+          height: 50px;
           background: white;
-          padding: 10px;
+          padding: 6px;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           border-radius: 10px;
           text-align: center;
@@ -134,9 +135,9 @@
         /* 닫기 버튼 스타일 */
         .close-btn {
           position: absolute;
-          width: 30px;
-          top: -15px;
-          height: 30px;
+          width: 26px;
+          top: -14px;
+          height: 26px;
           right: -14px;
           background: #ff0000;
           color: #ffffff;
@@ -167,13 +168,16 @@
         margin-bottom: 10px;
         }
         .searchBox {
-          display: flex
-;
+          display: flex;
+       
           justify-content: space-between;
         }
         #gameCardContainer{
           height: calc(100vh - 130px);
           overflow: auto;
+        }
+        .log{
+          font-size: 10px;
         }
       </style>
         <!DOCTYPE html>
@@ -195,15 +199,16 @@
        <button class="close-btn" onclick="closePopup()">X</button>
        
        <div class ="selectBox">
-        <select class="searchOption" name="language" onchange="filterBoardgame(this)">
-          <option value="korean">Title</option>
-          <option value="english">Best</option>
-          <option value="chinese">추천</option>
-          <option value="spanish">난이도</option>
-        </select>
-        <input type="text" name="search" id="searchBox">
-        <input class = "searchBtn" ype="button" value="Search">
-    </div>
+          <select class="searchOption" name="language">
+            <option value="title">Title</option>
+            <option value="best">Best</option>
+            <option value="community">추천</option>
+            <option value="weight">난이도</option>
+          </select>
+          <input type="text" name="search" id="searchBox">      
+          <button class="searchBtn" onclick="filterBoardgame()">Filter</button>
+        </div>
+        <div class="log"></div>
    </div>
    <div class="mainbox">
     <div class="top">

@@ -87,19 +87,43 @@ async function fetchTopGames() {
   document.getElementById("status").innerText = "✅ 데이터 수집 완료!";
 }
 
+let ttt;
 // 🔹 개별 게임 정보 가져오기
 async function fetchGameDetails(gameId) {
   const GAME_API = `https://boardgamegeek.com/xmlapi2/thing?id=${gameId}&stats=1`;
   const PROXY_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(GAME_API)}`;
 
   try {
-      let response = await fetch(PROXY_URL);
-      let data = await response.json();
-      let parser = new DOMParser();
-      let xmlDoc = parser.parseFromString(data.contents, "text/xml");
-      console.log(xmlDoc)
-      
-      let name = xmlDoc.querySelector("name[type='primary']").getAttribute("value");
+        let response = await fetch(PROXY_URL);
+        let data = await response.json();
+        let parser = new DOMParser();
+        let xmlDoc = parser.parseFromString(data.contents, "text/xml");
+        ttt = xmlDoc;
+        console.log(xmlDoc)
+        
+         let englishValue = xmlDoc.querySelector("name[type='primary']").getAttribute("value");
+
+      // 한글을 포함하는 값 찾기
+        let names= xmlDoc.querySelectorAll("name[type='alternate']")
+        const koreanRegex = /[가-힣]/;
+         
+
+        // 영어를 포함하는 값 찾기 (한글이 없을 경우)
+        let koreanValue = null;
+
+        // 각 요소에서 value 값 추출
+        names.forEach(element => {
+            const value = element.getAttribute('value');
+        
+            if (koreanRegex.test(value)) {
+                koreanValue = value; // 한글 값을 저장 (여러 개여도 마지막 값 저장)
+            } 
+        });
+  
+  // 결과 선택 (한글이 있으면 한글, 없으면 영어)    
+        const name = koreanValue || englishValue;
+  
+
       let imgsrc = xmlDoc.querySelector("image").innerHTML|| "N/A";
       let weight = xmlDoc.querySelector("statistics ratings averageweight")?.getAttribute("value") || "N/A";
       let rank = xmlDoc.querySelector("statistics ratings ranks rank")?.getAttribute("value") || "N/A";

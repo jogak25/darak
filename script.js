@@ -240,17 +240,20 @@ function loadGamePage(e) {
     calcPage(startPage, Math.ceil(currentList.length / 10), currentP);
 }
 // // JSON 데이터를 카드로 추가하는 함수
-
+function loadGameData(){
+    openDetail();
+}
 function createCards(gameData) {
     const cardContainer = document.getElementById('gameCardContainer');
 
-    const card = document.createElement('div');
+    const card = document.createElement('button');
     card.className = 'card';
+    card.onclick = ()=>loadGameData();
     card.innerHTML = `
         <div class="topInfo">
             <div class="hexagon">${gameData.rank}</div>
             <img src="${gameData.imgsrc}" class="image"></src>
-            <div>
+            <div class="shortInfo">
                 <div class="title">${gameData.name}</div>
                 <div>
                 <span class="tag">R: ${gameData.rank}</span>
@@ -258,9 +261,8 @@ function createCards(gameData) {
                 <span class="tag">Best: ${gameData.bestPlayers}</span>
                 <span class="tag">추천: ${gameData.recommendedPlayers}</span>
                 </div>
-                <p class="info">Mechanisms: ${gameData.mechanisms}</p>
-            <p class="info">Types: ${gameData.types}</p>
-            <p class="info">Link: <a href="${gameData.link}" target="_blank">BoardGameGeek</a></p>
+
+            <i class='bx bx-package'></i>
           </div>
         </div>                 
         `;
@@ -277,5 +279,17 @@ function closePopup() {
     document.getElementById("popup").style.display = "none";
     document.getElementById("overlay").style.display = "none";
 }
+function openDetail() {
+    document.getElementById("gameDetail").style.display = "block";
+}
+function closeDetail() {
+    document.getElementById("gameDetail").style.display = "none";
+    
+}
+
 console.log('begin');
 loadgame();
+
+// /<p class="info">Link: <a href="${gameData.link}" target="_blank">BoardGameGeek</a></p>
+        // <p class="info">Mechanisms: ${gameData.mechanisms}</p>
+            // <p class="info">Types: ${gameData.types}</p>

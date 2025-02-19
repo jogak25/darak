@@ -240,15 +240,15 @@ function loadGamePage(e) {
     calcPage(startPage, Math.ceil(currentList.length / 10), currentP);
 }
 // // JSON 데이터를 카드로 추가하는 함수
-function loadGameData(){
-    openDetail();
+function loadGameData(gameData){
+    openDetail(gameData);
 }
 function createCards(gameData) {
     const cardContainer = document.getElementById('gameCardContainer');
 
     const card = document.createElement('button');
     card.className = 'card';
-    card.onclick = ()=>loadGameData();
+    card.onclick = ()=>loadGameData(gameData);
     card.innerHTML = `
         <div class="topInfo">     
             <img src="${gameData.imgsrc}" class="image"></src>
@@ -266,20 +266,7 @@ function createCards(gameData) {
         `;
     cardContainer.appendChild(card);
 }
-/** 
- * 
- <div class="shortInfo">
-                <div class="title">${gameData.name}</div>
-                <div>
-                <span class="tag">R: ${gameData.rank}</span>
-                <span class="tag">W: ${gameData.weight}</span>
-                <span class="tag">Best: ${gameData.bestPlayers}</span>
-                <span class="tag">추천: ${gameData.recommendedPlayers}</span>
-                </div>
 
-            <i class='bx bx-package'></i>
-          </div>
-*/
 // 팝업 열기
 function openPopup() {
     document.getElementById("popup").style.display = "block";
@@ -291,8 +278,15 @@ function closePopup() {
     document.getElementById("popup").style.display = "none";
     document.getElementById("overlay").style.display = "none";
 }
-function openDetail() {
+function openDetail(data) {
     document.getElementById("gameDetail").style.display = "block";
+    document.querySelector(".title-image").src=data.imgsrc;
+    document.querySelector("#detail-player").innerText = data.recommendedPlayers;
+    document.querySelector("#detail-time").innerHTML = 60;
+    document.querySelector("#detail-community").innerHTML = data.recommendedPlayers;
+    document.querySelector("#detail-best").innerHTML = data.bestPlayers;
+    document.querySelector("#detail-weight").innerHTML = data.weight;
+    console.log(data);
 }
 function closeDetail() {
     document.getElementById("gameDetail").style.display = "none";

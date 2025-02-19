@@ -7,16 +7,24 @@
     <title>JSON to Card</title>
     
     <style>
-      .mainbox{
-        max-width: 800px;;
+      body{
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;  /* 가로 중앙 정렬 */
+        align-items: center;      /* 세로 중앙 정렬 */
+        padding : 0 15px;
       }
-        .card {
-          all: unset;
-          margin: 6px 0px;
-          width: 95%;
-          position: relative;
-          display: inline-block;
-        }
+      .mainbox{
+        max-width: 500px;;
+      }
+      .card {
+        all: unset;
+        margin: 8px 0px;
+        width: 100%;
+        position: relative;
+        display: inline-block;
+      }
         .title {
             margin-top: 0;
         }
@@ -48,10 +56,11 @@
           text-shadow: 0 0 4px black;
         }
         .image {
-          max-height: 90px;
+          /* max-height: 90px; */
           border-radius: 6px;
           width: 100%;
-          height: 40%;
+          min-height : 30px;
+          height: 100px;;
           object-fit: cover;
           object-position: center;
           box-shadow: 1px 2px 4px 1px #808080;
@@ -131,6 +140,7 @@
         }
         .shortInfo-btm{
           position: absolute;
+
           height: 20px;
           bottom: 0;
           right: 0;
@@ -139,6 +149,11 @@
           background: #00000040;
           padding: 0 10px;
           border-radius: 10px 0 5px 0;                 
+        }
+        .detailTopInfo {
+          display: flex;
+          flex-direction: column;
+          padding-left: 10px;
         }
         /* 팝업창 스타일 */
         .popup {
@@ -155,6 +170,15 @@
           border-radius: 10px;
           text-align: center;
           align-content: space-around;
+          max-width: 500px;
+        }
+        .infoDetail {
+          display: flex;
+        }
+        .detail-title {
+          /* margin-left : 10px; */
+          margin-bottom : 20px;
+      
         }
   
         /* 배경 오버레이 */
@@ -225,18 +249,24 @@
           text-shadow: 0 0 3px black;
         }
         .gameDetail{
-          display: none;;
+          display: none;
           position: absolute;
           width: 97vw;
-          max-width: 800px;
-          height: 89vh;
+          max-width: 500px;
+          height: 91vh;
           background-color: #ffffffe3;
           z-index: 1;
-          /* display: none; */
-          top: 9%;
-          left: 1%;
+          top: 42px;
           border: 1px solid;
           border-radius: 10px;
+          padding:10px;
+        }
+        .accent {
+          color: rgb(0, 148, 253);
+        }
+        .detailRank{
+          font-size: 26px;
+          
         }
         .closeGameDetail{
         
@@ -248,6 +278,44 @@
           font-weight: 600;
           font-size: 15px;
           margin: 5px;
+        }
+        .title-image{
+          width: 100px;
+          height:100px;
+          border-radius: 10px;
+        }
+        .detailTag{
+          font-size: 12px;
+        }
+        .detailInfo{
+          display: flex;
+          justify-content: space-around;
+          padding: 10px;
+          border-top: 1px solid #0585D5;
+          border-bottom: 1px solid #0585D5;
+          background-color: #f3f8fa66;
+          margin:10px 0;
+        }
+        .term{
+          width: 60px;;
+        }
+        .detail-tag{
+          font-size:12px;
+          color: #808080;
+          text-align: center;
+        }
+        .detail-data{
+          color: #808080;
+          text-align: center;
+          margin-bottom:6px;
+        }
+        .detail-subscript{
+          padding: 10px 5px;
+          background-color: #e5f3f57d;
+          border-top: 1px solid gray;
+          border-bottom: 1px solid gray;
+          margin-bottom: 10px;
+          color: gray;
         }
       </style>
         <!DOCTYPE html>
@@ -269,37 +337,43 @@
   <div class = "gameDetail", id="gameDetail">
     <button class="closeGameDetail" onclick="closeDetail()">X</button>
     <div class="infoDetail">  
-      <img src="" class="image"></src>
-      <div class="shortInfo">
-          <div class="detailTop">
-            <div class="detailRank">1</div>
-            <div class="title">Brass</div>
-          </div>          
-          <div>
-          <span class="" id="community">2-4</span>
-          <span class="" id="best">4</span>
-          <span class="" id="weight">3.1</span>
-          <span class="" id="players">4</span>
-        </div>      
+      <img src="" class="title-image"></src>
+      <div class="detailTopInfo">         
+        <div class="detail-title">Brass</div>
+        <div class="detailRank accent">1</div>
+        <div class="detailTag accent">Overall</div>   
+      </div>      
     </div>
-    <div>Player Aid</div>
-  </div>       
+    <div class="detailInfo"> 
+      <span class="term">
+        <div class="detail-data" id="detail-player">2-4</div>
+        <div class="detail-tag" id="tag">Player</div>
+      </span>
+      <span class="term">
+        <div class="detail-data" id="detail-time">60</div>
+        <div class="detail-tag" id="tag">Time</div>
+      </span>
+      <span class="term">
+        <div class="detail-data" id="detail-community">2-4</div>
+        <div class="detail-tag" id="tag">Community</div>
+      </span>
+      <span class="term">
+        <div class="detail-data" id="detail-best">3</div>
+        <div class="detail-tag" id="tag">Best</div>
+      </span>
+      <span class="term">
+        <div class="detail-data" id="detail-weight">2.54</div>
+        <div class="detail-tag" id="tag">Weight</div>
+      </span>     
+    </div>     
+    <div class="detail-subscript">About</div>  
+    <div class="detail-subscript">Setup</div>  
+    <div class="detail-subscript">Player Aid</div>  
+    <div class="detail-subscript">Score</div>  
+    <div class="detail-subscript">Video</div>  
+      
   </div>
-   <div class="popup" id="popup">
-       <button class="close-btn" onclick="closePopup()">X</button>
-       
-       <div class ="selectBox">
-          <select class="searchOption" name="language">
-            <option value="title">Title</option>
-            <option value="best">Best</option>
-            <option value="community">추천</option>
-            <option value="weight">난이도</option>
-          </select>
-          <input type="text" name="search" id="searchBox">      
-          <button class="searchBtn" onclick="filterBoardgame()">Filter</button>
-        </div>
-        <div class="log"></div>
-   </div>
+  
    <div class="mainbox">
     <div class="top">
       <div class="searchBox">
@@ -314,9 +388,25 @@
 
    
     </div>
+    
     <div id="gameCardContainer">
         <!-- Cards will be inserted here -->
     </div>
+    <div class="popup" id="popup">
+      <button class="close-btn" onclick="closePopup()">X</button>
+      
+    <div class ="selectBox">
+         <select class="searchOption" name="language">
+           <option value="title">Title</option>
+           <option value="best">Best</option>
+           <option value="community">추천</option>
+           <option value="weight">난이도</option>
+         </select>
+         <input type="text" name="search" id="searchBox">      
+         <button class="searchBtn" onclick="filterBoardgame()">Filter</button>
+       </div>
+       <div class="log"></div>
+  </div>
   </div>
   <script src="./script.js"></script>  
 </body>

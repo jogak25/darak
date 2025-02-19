@@ -301,7 +301,3 @@ function closeDetail() {
 
 console.log('begin');
 loadgame();
-
-// /<p class="info">Link: <a href="${gameData.link}" target="_blank">BoardGameGeek</a></p>
-        // <p class="info">Mechanisms: ${gameData.mechanisms}</p>
-            // <p class="info">Types: ${gameData.types}</p>

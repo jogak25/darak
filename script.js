@@ -250,10 +250,25 @@ function createCards(gameData) {
     card.className = 'card';
     card.onclick = ()=>loadGameData();
     card.innerHTML = `
-        <div class="topInfo">
-            <div class="hexagon">${gameData.rank}</div>
+        <div class="topInfo">     
             <img src="${gameData.imgsrc}" class="image"></src>
-            <div class="shortInfo">
+            <div class="shortInfo-top">
+                <span class="rank">No. ${gameData.rank}</span>
+                <span class="title">${gameData.name}</span>                
+            </div>
+            <div class="shortInfo-btm">
+                <span class="tag">W: ${gameData.weight}</span>
+                <span class="tag">Best: ${gameData.bestPlayers}</span>
+                <span class="tag">추천: ${gameData.recommendedPlayers}</span>
+            </div>
+            
+        </div>                 
+        `;
+    cardContainer.appendChild(card);
+}
+/** 
+ * 
+ <div class="shortInfo">
                 <div class="title">${gameData.name}</div>
                 <div>
                 <span class="tag">R: ${gameData.rank}</span>
@@ -264,10 +279,7 @@ function createCards(gameData) {
 
             <i class='bx bx-package'></i>
           </div>
-        </div>                 
-        `;
-    cardContainer.appendChild(card);
-}
+*/
 // 팝업 열기
 function openPopup() {
     document.getElementById("popup").style.display = "block";

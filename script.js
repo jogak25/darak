@@ -132,7 +132,7 @@ function loadData(database) {
                 buf.push(game);                
             }
         })
-    }else if(type == 'all') {
+    }else if(database == 'all') {
         gameList.forEach((game)=>{
             
             buf.push(game);

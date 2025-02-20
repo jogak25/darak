@@ -124,6 +124,26 @@ function filterByWeight(games, input) {
         return weight >= minWeight && weight <= maxWeight;
     });
 }
+function loadData(database) {
+    let buf=[];
+    if(database== 'own') {
+        gameList.forEach((game)=>{
+            if (game.owns=='1') {
+                buf.push(game);                
+            }
+        })
+    }else if(type == 'all') {
+        gameList.forEach((game)=>{
+            
+            buf.push(game);
+                
+            
+        })
+    }
+    currentList = buf;
+    console.log(buf);
+    loadGameList(buf);
+}
 function filterBoardgame(e){
     let value = document.querySelector("#searchBox").value;
     let type =  document.querySelector(".searchOption").value;
@@ -254,14 +274,17 @@ function createCards(gameData) {
             <img src="${gameData.imgsrc}" class="image"></src>
             <div class="shortInfo-top">
                 <span class="rank">No. ${gameData.rank}</span>
-                <span class="title">${gameData.name}</span>                
+                <span class="title">${gameData.name}</span>     
+                <span class="material-symbols-outlined">
+                ${gameData.owns === '1' ? '<span class="material-symbols-outlined owns">book_2</span>' : ''}
+            </div>
+       
             </div>
             <div class="shortInfo-btm">
                 <span class="tag">W: ${gameData.weight}</span>
                 <span class="tag">Best: ${gameData.bestPlayers}</span>
                 <span class="tag">추천: ${gameData.recommendedPlayers}</span>
-            </div>
-            
+            </div>            
         </div>                 
         `;
     cardContainer.appendChild(card);
@@ -281,11 +304,17 @@ function closePopup() {
 function openDetail(data) {
     document.getElementById("gameDetail").style.display = "block";
     document.querySelector(".title-image").src=data.imgsrc;
-    document.querySelector("#detail-player").innerText = data.recommendedPlayers;
-    document.querySelector("#detail-time").innerHTML = 60;
+    document.querySelector("#detail-player").innerText = data.minPlayer + "-"+data.maxPlayer;
+    document.querySelector("#detail-time").innerHTML = data.minplayTime+"-"+ data.maxplayTime;
     document.querySelector("#detail-community").innerHTML = data.recommendedPlayers;
     document.querySelector("#detail-best").innerHTML = data.bestPlayers;
     document.querySelector("#detail-weight").innerHTML = data.weight;
+    if(data.owns ==1) {
+        document.querySelector("#own").classList.remove('disable');
+    }else{
+        document.querySelector("#own").classList.add('disable');
+    }
+    
     console.log(data);
 }
 function closeDetail() {

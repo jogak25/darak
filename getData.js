@@ -82,7 +82,7 @@ async function fetchTopGames() {
       await new Promise(resolve => setTimeout(resolve, delay)); // 1.5초 딜레이
   }
 
-  // // // 🔹 3. JSON 파일로 저장
+  // // 🔹 3. JSON 파일로 저장
   downloadJSON(gamesData, "bgg_top_games.json");
   document.getElementById("status").innerText = "✅ 데이터 수집 완료!";
 }
@@ -131,6 +131,16 @@ async function fetchGameDetails(gameId) {
       let recommendedPlayers = xmlDoc.querySelector("poll-summary[name='suggested_numplayers'] result[name='recommmendedwith']")?.getAttribute("value").split('Recommended with')[1].split('players')[0] || "N/A";
       let mechanisms = [...xmlDoc.querySelectorAll("link[type='boardgamemechanic']")].map(el => el.getAttribute("value")).join(", ") || "N/A";
       let types = [...xmlDoc.querySelectorAll("link[type='boardgamecategory']")].map(el => el.getAttribute("value")).join(", ") || "N/A";
+      let minplayTime = xmlDoc.querySelector("minplaytime")?.getAttribute("value")|| "N/A";     
+      let maxplayTime = xmlDoc.querySelector("maxplaytime")?.getAttribute("value")|| "N/A";         
+      let minPlayer =xmlDoc.querySelector("minplayers")?.getAttribute("value")|| "N/A";   ;
+      let maxPlayer =xmlDoc.querySelector("maxplayers")?.getAttribute("value")|| "N/A";   ;
+      let description ="";
+      let owns="";
+      let setup="";
+      let playerAid="";
+      let videoLink="";
+      let score="";
       console.log(imgsrc)
       
       return {
@@ -138,11 +148,21 @@ async function fetchGameDetails(gameId) {
           imgsrc,
           rank,
           name,
+          description,
+          minplayTime,
+          maxplayTime,
+          minPlayer,
+          maxPlayer,
           weight: parseFloat(weight).toFixed(2),
           bestPlayers,
           recommendedPlayers,
           mechanisms,
           types,
+          owns,
+          setup,
+          playerAid,
+          videoLink,
+          score,
           link: `https://boardgamegeek.com/boardgame/${gameId}`
       };
   } catch (error) {

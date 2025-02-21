@@ -37,7 +37,7 @@
         }
         .rank {
           font-size: 16px;
-          width: 76px;
+          width: 80px;
           display: inline-block;
         }
         .main-title{
@@ -159,18 +159,18 @@
         .popup {
           display: none;
           position: fixed;
-          top: 7%;
+          top: 10%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 83%;
-          height: 50px;
+          width: 80%;
+          height: 80px;
           background: white;
           padding: 6px;
+          border: 1px solid gray;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           border-radius: 10px;
-          text-align: center;
           align-content: space-around;
-          max-width: 500px;
+          max-width: 450px;
         }
         .infoDetail {
           display: flex;
@@ -354,7 +354,7 @@
       }
       .searchContainer{
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
       }
       .dataSelect{
         all: unset;
@@ -364,6 +364,20 @@
         border-radius: 5px;
         text-align: right;
         margin: 5px 3px 5px 0;
+
+      }
+      .databaseContainer {
+        text-align: left;
+        height: 40px;
+      }
+      .databaseContainer button{
+        all: unset;
+        background-color: #878787;
+        color: #ffffff;
+        padding: 5px 5px;
+        border-radius: 5px;
+        text-align: right;
+        margin: 5px 20px 1px 0;
       }
 </style>
       </style>
@@ -388,10 +402,10 @@
     <div class="infoDetail">  
       <img src="" class="title-image"></src>
       <div class="detailTopInfo">         
-        <div class="detail-title">Brass</div>
+        <div id="detail-title" class="detail-title">Brass</div>
         <div class="detail-first">
           <div class="detail-firstcontainer">
-            <div class="detailRank accent">1</div>
+            <div id="detail-rank" class="detailRank accent">1</div>
             <div class="detailTag accent">Overall</div>   
           </div>          
           <div id="own" class="detail-firstcontainer disable">
@@ -446,7 +460,7 @@
           <button class="open-btn" onclick="openPopup()">Search</button>
         </div>
         <div class="searchContainer">
-          <span> <button class="dataSelect"  onclick="loadData('own')">Owns</button><button  class="dataSelect" onclick="loadData('all')">total</button>  </span>
+          <!-- <span> <button class="dataSelect"  onclick="loadData('own')">Owns</button><button  class="dataSelect" onclick="loadData('all')">total</button>  </span> -->
           <span id="pageContainer" class = "pageContainer">
           </span>
         </div>
@@ -464,17 +478,22 @@
     <div class="popup" id="popup">
       <button class="close-btn" onclick="closePopup()">X</button>
       
-    <div class ="selectBox">
-         <select class="searchOption" name="language">
-           <option value="title">Title</option>
-           <option value="best">Best</option>
-           <option value="community">추천</option>
-           <option value="weight">난이도</option>
-         </select>
-         <input type="text" name="search" id="searchBox">      
-         <button class="searchBtn" onclick="filterBoardgame()">Filter</button>
-       </div>
-       <div class="log"></div>
+    <div >
+      <div class="databaseContainer">
+        <button>Owns</button><button>1 to 1000</button>
+      </div>
+      <div class ="selectBox">
+        <select class="searchOption" name="language">
+          <option value="title">Title</option>
+          <option value="best">Best</option>
+          <option value="community">추천</option>
+          <option value="weight">난이도</option>
+        </select>
+        <input type="text" name="search" id="searchBox">      
+        <button class="searchBtn" onclick="filterBoardgame()">Filter</button>
+      </div>
+    </div>
+    <div class="log"></div>
   </div>
   </div>
   <script src="./script.js"></script>  

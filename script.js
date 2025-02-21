@@ -304,6 +304,8 @@ function closePopup() {
 function openDetail(data) {
     document.getElementById("gameDetail").style.display = "block";
     document.querySelector(".title-image").src=data.imgsrc;
+    document.querySelector("#detail-rank").innerText=data.rank;
+    document.querySelector("#detail-title").innerText=data.name;
     document.querySelector("#detail-player").innerText = data.minPlayer + "-"+data.maxPlayer;
     document.querySelector("#detail-time").innerHTML = data.minplayTime+"-"+ data.maxplayTime;
     document.querySelector("#detail-community").innerHTML = data.recommendedPlayers;

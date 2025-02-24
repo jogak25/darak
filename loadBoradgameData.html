@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoardGameGeek Top Rankings</title>
+   
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+        .card p {
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BoardGameGeek 데이터 수집</h1>
+    <button onclick="fetchTopGames()">게임 데이터 가져오기</button>
+    <div id="progress-container">
+        <progress id="progress-bar" max="100" value="0">0%</progress>
+    </div>
+    <div id="status">진행 상황: 대기 중...</div>
+
+    <h2>BoardGameGeek Top Rankings</h2>
+
+    <label>순위 범위: </label>
+    <input type="number" id="startRank" value="1" min="1" max="1000"> ~ 
+    <input type="number" id="endRank" value="100" min="1" max="1000">
+    <button onclick="fetchTopGames()">불러오기</button>
+    
+    <!-- <table id="gameTable" style="display: none;">
+        <thead>
+            <tr>
+                <th onclick="sortTable('rank')">순위 ▲</th>
+                <th onclick="sortTable('name')">게임명 ▲</th>
+                <th onclick="sortTable('id')">게임 ID ▲</th>
+                <th onclick="sortTable('players')">가능 인원 ▲</th>
+                <th onclick="sortTable('weight')">난이도 (Weight) ▲</th>
+                <th onclick="sortTable('bestPlayerCount')">최적 인원 ▲</th>
+            </tr>
+        </thead>
+        <tbody id="gameData"></tbody>
+    </table> -->
+    <div id="gameCardContainer">
+        <!-- Cards will be inserted here -->
+    </div>
+    <script src="getData.js"></script>
+</body>
+</html>

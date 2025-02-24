@@ -8,23 +8,24 @@ function loadgame() {
     .then(gameData => {
         gameList = gameData;
         currentList = gameData;
-        let cardCount = 0;
-        let startIndex = (currentPage - 1) * 10;
-        let endIndex = startIndex + 10;
-        let gamesToDisplay = gameData.slice(startIndex, endIndex);
-        for (let i=0; i<gamesToDisplay.length; i++) {
+        loadData('own');
+        // let cardCount = 0;
+        // let startIndex = (currentPage - 1) * 10;
+        // let endIndex = startIndex + 10;
+        // let gamesToDisplay = gameData.slice(startIndex, endIndex);
+        // for (let i=0; i<gamesToDisplay.length; i++) {
 
-            if (cardCount >= 20) {
+        //     if (cardCount >= 20) {
 
 
-                console.log("카드 생성이 20개를 초과하여 중단됩니다.");
-                break;
-            }
-            createCards(gamesToDisplay[i]);
-            cardCount++;
-        }
+        //         console.log("카드 생성이 20개를 초과하여 중단됩니다.");
+        //         break;
+        //     }
+        //     createCards(gamesToDisplay[i]);
+        //     cardCount++;
+        // }
         const maxPageSize = gameList.length/10;
-        calcPage(1,maxPageSize);
+        // calcPage(1,maxPageSize);
     })
     .catch(error => console.error('Error fetching the file:', error));
    
@@ -127,8 +128,10 @@ function filterByWeight(games, input) {
 function loadData(database) {
     let buf=[];
     if(database== 'own') {
-        gameList.forEach((game)=>{
+        console.log(gameList)
+        gameList.forEach((game)=>{ 
             if (game.owns=='1') {
+                console.log('push')
                 buf.push(game);                
             }
         })
@@ -196,8 +199,8 @@ function cratePageBtn(pageNumber, currentPage) {
     console.log(pageNumber,currentPage);
     const pageContainer = document.getElementById('pageContainer');
     let btn = document.createElement("button");
-    btn.innerText = pageNumber;
-    btn.value = pageNumber;
+    btn.innerText = Math.floor(pageNumber);
+    btn.value =  Math.floor(pageNumber);
 
     // 기본 스타일 적용
     btn.style.margin = "2px";
